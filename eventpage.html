@@ -1,0 +1,432 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Tech Fest 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+        nav {
+            background-color: #48183c;
+            color: white;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav h2 {
+            font-size: 22px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            text-indent: 20px;
+        }
+        nav ul li a {
+            color: white;
+            font-size: 16px;
+        }
+        nav ul li a:hover {
+            color: #ffd369;
+        }
+        .banner {
+            min-height: 400px;
+            background: rgb(77, 8, 74);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+        .banner h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #ffd369;
+            color: #4e144c;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        section {
+            padding: 50px 8%;
+        }
+        section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #182848;
+            font-size: 30px;
+        }
+        .details {
+            display: flex;
+            justify-content: space-between;
+        }
+        .detail-box {
+            background-color: white;
+            padding: 25px;
+            text-align: center;
+            flex: 1;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-right: 20px;
+        }
+        .detail-box h3 {
+            color: #431848;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid #aaf3cd;
+            text-align: center;
+        }
+        th {
+            background-color: #461848;
+            color: white;
+        }
+        .speakers {            
+             background: #f1f5f9;      
+               }          
+        .speaker-grid {             
+            display: grid;            
+             grid-template-columns: repeat(4,1fr);             
+             padding-top: 10px;  
+             gap: 22px;;
+        }          
+        .speaker-card {             
+            background: white;            
+             padding: 30px 20px;             
+             text-align: center;             
+             border-radius: 12px;             
+             transition: 0.4s;         
+        }          
+        .speaker-card:hover {             
+            transform: translateY(-10px);             
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);         
+        }          
+        .speaker-image {             
+            width: 100px;             
+            height: 100px;             
+            margin: auto;             
+            border-radius: 50%;             
+            background: linear-gradient(135deg,#0284c7,#38bdf8);            
+            color: white;             
+            display: flex;             
+            justify-content: center;             
+            align-items: center;             
+            font-size: 30px;            
+            font-weight: bold;        
+         }          
+         .speaker-card h3 {             
+            margin-top: 18px;        
+        }          
+        .speaker-card p {             
+            color: #64748b;             
+            font-size: 14px;         
+        } 
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3d1848;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #672670;
+        }
+        .contact {
+            background-color: #481844;
+            color: white;
+            text-align: center;
+        }
+        .contact h2 {
+            color: white;
+        }
+        footer {
+            background-color: #2e1030;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;   
+            }
+            .banner h1 {
+                font-size: 35px;
+            }
+            .banner p {
+                font-size: 17px;
+            }
+            .details {
+                flex-direction: column;
+            }
+            .speakers {
+                flex-direction: column;
+                align-items: center;
+            }
+            .speaker-card {
+                width: 80%;
+            }
+            section {
+                padding: 40px 5%;
+            }
+        }
+        @media (max-width: 480px) {
+            nav h2 {
+                font-size: 19px;
+            }
+            nav ul li a {
+                font-size: 14px;
+            }
+            .banner h1 {
+                font-size: 28px;
+            }
+
+            .banner p {
+                font-size: 15px;
+            }
+
+            section h2 {
+                font-size: 25px;
+            }
+
+            .speaker-card {
+                width: 100%;
+            }
+
+            th, td {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h2>TechFest 2026</h2>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#details">Details</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#speakers">Speakers</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="banner" id="home">
+        <div>
+            <h1>College TechFest 2026</h1>
+            <p>
+                Explore Technology, Innovation and Creativity
+            </p>
+            <p>
+                29 October 2026 |Alliance Univercity Auditorium
+            </p>
+            <br>
+            <a href="#register" class="btn">Register Now</a>
+        </div>
+    </section>
+    <section id="details">
+        <h2>Event Details</h2>
+        <div class="details">
+            <div class="detail-box">
+                <h3>Date</h3>
+                <p>29 October 2026</p>
+            </div>
+            <div class="detail-box">
+                <h3>Time</h3>
+                <p>9:00 AM - 5:00 PM</p>
+            </div>
+            <div class="detail-box">
+                <h3>Venue</h3>
+                <p>Alfresco</p>
+            </div>
+            <div class="detail-box">
+                <h3>Entry</h3>
+                <p>Free Registration</p>
+            </div>
+        </div>
+    </section>
+    <section id="schedule">
+        <h2>Event Schedule</h2>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Time</th>
+                    <th>Program</th>
+                    <th>Speaker</th>
+                </tr>
+                <tr>
+                    <td>9:00 AM</td>
+                    <td>Registration</td>
+                    <td>Event Team</td>
+                </tr>
+                <tr>
+                    <td>10:00 AM</td>
+                    <td>Opening Ceremony</td>
+                    <td>Principal</td>
+                </tr>
+                <tr>
+                    <td>11:00 AM</td>
+                    <td>Future of AI</td>
+                    <td>Dr. ABC</td>
+                </tr>
+                <tr>
+                    <td>1:00 PM</td>
+                    <td>Lunch Break</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>2:00 PM</td>
+                    <td>Web Development Workshop</td>
+                    <td>Ms. EFG</td>
+                </tr>
+                <tr>
+                    <td>4:00 PM</td>
+                    <td>Prize Distribution</td>
+                    <td>Event Team</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+     <section class="speakers" id="speakers">   
+         <div class="container">        
+         <div class="section-title"> 
+         <h2>Featured Speakers</h2>         
+           <p>  Learn from industry professionals</p>
+      </div>          
+        <div class="speaker-grid">            
+      <div class="speaker-card">              
+    <div class="speaker-image">AB           
+    </div> 
+     <h3>Dr.ABC</h3>               
+     <p>AI & Machine Learning Expert</p> 
+      </div>             
+     <div class="speaker-card">                
+      <div class="speaker-image"> 
+         EF          
+   </div>                  
+   <h3>EFG</h3>         
+        <p>Product & Technology Leader</p>              
+    </div>              
+    <div class="speaker-card">                
+          <div class="speaker-image">                    
+             HI                
+            </div>                  
+            <h3>HIJK</h3>                 
+             <p>Software Engineering Expert</p>             
+            </div>             
+             <div class="speaker-card">                  
+                <div class="speaker-image">                     
+                    LM                
+                </div>                  
+                <h3>LMN</h3>                  
+                <p>UX & Design Consultant</p>              
+            </div>         
+         </div>      
+        </div> 
+     </section> 
+    <section id="register">
+        <h2>Register for the Event</h2>
+        <div class="form-container">
+            <form>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <select id="department">
+                        <option>BCA</option>
+                        <option>BBA</option>
+                        <option>B.Com</option>
+                        <option>MCA</option>
+                        <option>LLB</option>
+                        <option>LLM</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Any message or questions?"></textarea>
+                </div>
+                <button type="submit"> Submit Registration</button>
+            </form>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: techfest@allianceuni.edu</p>
+        <p>Phone: +91 123123456</p>
+        <p>Venue: Alliance University, Bengaluru</p>
+    </section>
+    <footer>
+        <p>@2026 Alliance University TechFest | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
