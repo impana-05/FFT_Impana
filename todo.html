@@ -1,0 +1,567 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow</title>
+    
+    <style>
+        todo.css
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f6f7fb;
+    color: #1f2937;
+}
+
+.navbar {
+    height: 72px;
+    background: white;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7%;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.logo span {
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    background: #f463c1;
+    color: white;
+    border-radius: 9px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.links {
+    display: flex;
+    gap: 30px;
+}
+
+.links a {
+    text-decoration: none;
+    color: #666;
+}
+
+.profile {
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    color: #ff5b92;
+    background: #f0efff;
+}
+
+.container {
+    width: 86%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+.header {
+    margin-top: 40px;
+    padding: 45px;
+    border-radius: 24px;
+    background: linear-gradient(120deg, #eb10b4, #e88fd8);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 42px;
+    margin: 15px 0;
+}
+
+.text {
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+.welcome {
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.date {
+    text-align: right;
+}
+
+#day {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.card p {
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.blue {
+    background: #e9e7ff;
+    color: #fc5bff;
+}
+
+.orange {
+    background: #fff2df;
+    color: #f50b3e;
+}
+
+.green {
+    background: #e4f8ed;
+    color: #16a34a;
+}
+
+.purple {
+    background: #f2eaff;
+    color: #9333ea;
+}
+
+.tasks {
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+.taskHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.taskHeader p {
+    color: #888;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.addBtn {
+    background: #635bff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 18px;
+    margin-bottom: 20px;
+}
+
+.filters {
+    display: flex;
+    gap: 8px;
+}
+
+.filter {
+    border: none;
+    background: #f4f5f8;
+    padding: 9px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.filter.active {
+    background: #635bff;
+    color: white;
+}
+
+.clearBtn {
+    border: none;
+    background: none;
+    color: #ef4444;
+    cursor: pointer;
+}
+
+.taskBox {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    border: 1px solid #eee;
+    border-radius: 13px;
+    margin-bottom: 12px;
+}
+
+.taskInfo {
+    flex: 1;
+}
+
+.taskName {
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.taskBox.completed .taskName {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.taskTime {
+    font-size: 12px;
+    color: #999;
+}
+
+.taskButtons {
+    display: flex;
+    gap: 7px;
+}
+
+.btn {
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.priority {
+    font-size: 11px;
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.high {
+    color: #dc2626;
+    background: #fee2e2;
+}
+
+.medium {
+    color: #d97706;
+    background: #fef3c7;
+}
+
+.low {
+    color: #16a34a;
+    background: #dcfce7;
+}
+
+.progress {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.progressText {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.progressBar {
+    height: 9px;
+    background: #eee;
+    border-radius: 10px;
+}
+
+.progressFill {
+    height: 100%;
+    width: 0%;
+    background: #635bff;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modalBox {
+    width: 420px;
+    background: white;
+    border-radius: 18px;
+    padding: 28px;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.modalHeader p {
+    color: #888;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.closeBtn {
+    border: none;
+    background: #eee;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.modalBox label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 15px 0 8px;
+}
+
+.modalBox input,
+.modalBox select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 9px;
+}
+.saveBtn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 13px;
+    border: none;
+    border-radius: 9px;
+    background: #635bff;
+    color: white;
+    cursor: pointer;
+}
+.empty {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+}
+@media(max-width: 800px) {
+    .links {
+        display: none;
+    }
+    .container {
+        width: 92%;
+    }
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media(max-width: 550px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+    .taskHeader,
+    .toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .modalBox {
+        width: 90%;
+    }
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+             TaskFlow
+        </div>
+        <button class="profile">
+            Impana P
+        </button>
+    </nav>
+    <main class="container">
+        <section class="header">
+            <div>
+                <p class="welcome">
+                    WELCOME BACK
+                </p>
+                <h1>
+                    Stay focused.<br>
+                    Get things done.
+                </h1>
+                <p class="text">
+                    Organize your tasks, track your progress,
+                    and make every day productive.
+                </p>
+            </div>
+            <div class="date">
+                <div id="day"></div>
+                <span id="date"></span>
+            </div>
+        </section>
+        <section class="stats">
+            <div class="card">
+                <div>
+                    <p>Total Tasks</p>
+                    <h2 id="totalTasks">0</h2>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <p>Pending</p>
+                    <h2 id="pendingTasks">0</h2>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <p>Completed</p>
+                    <h2 id="completedTasks">0</h2>
+                </div>
+            </div>
+            <div class="card">
+                <div>
+                    <p>Progress</p>
+                    <h2 id="progress">0%</h2>
+                </div>
+            </div>
+        </section>
+        <section class="tasks">
+            <div class="taskHeader">
+                <div>
+                    <h2>My Tasks</h2>
+                    <p>
+                        Manage your daily tasks
+                    </p>
+                </div>
+                <button
+                    class="addBtn"
+                    onclick="openModal()">
+                    + Add New Task
+                </button>
+            </div>
+            <div class="toolbar">
+                <div class="filters">
+                    <button
+                        class="filter active"
+                        onclick="changeFilter('all', this)">
+                        All
+                    </button>
+                    <button
+                        class="filter"
+                        onclick="changeFilter('pending', this)">
+                        Pending
+                    </button>
+                    <button
+                        class="filter"
+                        onclick="changeFilter('completed', this)">
+                        Completed
+                    </button>
+                </div>
+                <button
+                    class="clearBtn"
+                    onclick="clearCompleted()">
+                    Clear Completed
+                </button>
+            </div>
+            <div id="taskList"></div>
+            <div class="progress">
+                <div class="progressText">
+                    <span>Today's Progress</span>
+                    <strong id="progressText">
+                        0%
+                    </strong>
+                </div>
+                <div class="progressBar">
+                    <div
+                        id="progressBar"
+                        class="progressFill">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="modal" class="modal">
+        <div class="modalBox">
+            <div class="modalHeader">
+                <div>
+                    <h2>Add New Task</h2>
+                    <p>
+                        Create a task and stay organized.
+                    </p>
+                </div>
+                <button
+                    class="closeBtn"
+                    onclick="closeModal()">
+                </button>
+            </div>
+            <label>Task Name</label>
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter your task...">
+            <label>Priority</label>
+            <select id="priorityInput">
+                <option value="low">
+                    Low Priority
+                </option>
+                <option value="medium">
+                    Medium Priority
+                </option>
+                <option value="high">
+                    High Priority
+                </option>
+            </select>
+            <button
+                class="saveBtn"
+                onclick="addTask()">
+                Add Task
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

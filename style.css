@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+     background-image:
+        linear-gradient(
+            rgba(15, 32, 65, 0.35),
+            rgba(15, 32, 65, 0.35)
+        ),
+        url("https://thumbs.dreamstime.com/b/green-beautiful-lawn-nice-sunny-weather-37675098.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+}
+
+.container {
+    background-color: white;
+    width: 350px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+
+h1 {
+    color: darkblue;
+    font-size: 26px;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: darkblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+#weather {
+    margin-top: 20px;
+}
+
+#cityName {
+    color: darkblue;
+}
+
+#weatherIcon {
+    width: 100px;
+    height: 100px;
+}
+
+p {
+    font-size: 16px;
+    color: #333;
+}
+
+#error {
+    color: red;
+}
+
+#loading {
+    color: blue;
+}
